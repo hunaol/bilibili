@@ -1,0 +1,20 @@
+# 敏感文件
+bili_cookie.json
+
+# 数据 / 下载目录
+data/
+downloads/
+*.m4s
+
+# 临时文件
+qrcode.jpg
+message.text
+message.json
+
+# IDE
+.idea/
+__pycache__/
+*.pyc
+
+# venv
+.venv/
