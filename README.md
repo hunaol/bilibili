@@ -1,5 +1,5 @@
 # Bilibili 视频下载工具
-
+##运行方式py main
 一个基于 Python 的 Bilibili 视频下载工具，支持扫码登录、Cookie 持久化、历史记录拉取和视频下载。
 
 ## 功能
