@@ -33,8 +33,11 @@ def get_video_info(client, bvid, cid):
     }
     res = client.get(url, params=params)
     data = res.json()
-    with open("./data/videomsg.json", "w") as f:
-        json.dump(data, f)
+    with open("./data/videomsg.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    if data.get("code") != 0:
+        print(f"  API 错误: code={data.get('code')}, message={data.get('message')}")
+        return {}
     return data["data"]
 
 
@@ -70,6 +73,10 @@ def download_video(client, bvid, cid, title):
     # 1. 获取音视频流地址
     print(f"获取播放地址: {title}")
     info = get_video_info(client, bvid, cid)
+
+    if not info:
+        print("  跳过：视频不存在或无法获取")
+        return
 
     # DASH 格式下，video 和 audio 是分开的列表
     dash = info.get("dash") or info
